@@ -20,7 +20,7 @@ const Header = () => {
                     })}>Home</Link>
                     <p>search modal</p>
                     <Link href="/coins" className={cn('nav-link', {
-                        'is-active': pathname === '/',
+                        'is-active': pathname === '/coins',
                         'is-home': true
                     })}>All Coins</Link>
                 </nav>
