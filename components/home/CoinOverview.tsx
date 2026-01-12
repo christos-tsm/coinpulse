@@ -3,9 +3,7 @@ import { formatCurrency } from "@/lib/utils";
 import Image from "next/image";
 
 const CoinOverview = async () => {
-    const coin = await fetcher<CoinDetailsData>('coins/bitcoin', {
-        dex_pair_format: 'symbol'
-    });
+    const coin = await fetcher<CoinDetailsData>('coins/bitcoin');
     return (
         <div id="coin-overview">
             <div className="header pt-2">
