@@ -3,7 +3,13 @@ import { formatCurrency } from "@/lib/utils";
 import Image from "next/image";
 
 const CoinOverview = async () => {
-    const coin = await fetcher<CoinDetailsData>('coins/bitcoin');
+    let coin;
+    try {
+        coin = await fetcher<CoinDetailsData>('coins/bitcoin');
+    } catch (error) {
+        return <div>Error loading coin overview</div>;
+    }
+
     return (
         <div id="coin-overview">
             <div className="header pt-2">

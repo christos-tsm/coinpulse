@@ -6,7 +6,14 @@ import Link from "next/link";
 import DataTable from "../DataTable";
 
 const TrendingCoins = async () => {
-    const trendingCoins = await fetcher<{ coins: TrendingCoin[] }>('search/trending', undefined, 300);
+    let trendingCoins;
+
+    try {
+        trendingCoins = await fetcher<{ coins: TrendingCoin[] }>('search/trending', undefined, 300);
+    } catch (error) {
+        console.log(error);
+        return <div>Error loading trending coins</div>;
+    }
 
     const columns: DataTableColumn<TrendingCoin>[] = [
         {
