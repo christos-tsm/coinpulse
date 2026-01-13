@@ -19,7 +19,7 @@ export async function fetcher<T>(endpoint: string, params?: QueryParams, revalid
 
     const response = await fetch(url, {
         headers: {
-            "x-cg-pro-api-key": API_KEY,
+            "x-cg-demo-api-key": API_KEY,
             "Content-Type": "application/json"
         } as Record<string, string>,
         next: { revalidate }
