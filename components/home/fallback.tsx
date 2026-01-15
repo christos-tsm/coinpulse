@@ -15,7 +15,7 @@ export const CoinOverviewFallback = () => {
 }
 
 export const TrendingCoinsFallback = () => {
-    const skeletonData = Array.from({ length: 6 }, (_, i) => ({ id: i }))
+    const skeletonData = Array.from({ length: 5 }, (_, i) => ({ id: i }))
 
     const columns: DataTableColumn<{ id: number }>[] = [
         {
@@ -53,6 +53,60 @@ export const TrendingCoinsFallback = () => {
                 rowKey={(item) => item.id.toString()}
                 headerCellClassName="py-3"
                 bodyCellClassName="py-2"
+            />
+        </div>
+    )
+}
+
+export const CategoriesFallback = () => {
+    const skeletonData = Array.from({ length: 10 }, (_, i) => ({ id: i }))
+
+    const columns: DataTableColumn<{ id: number }>[] = [
+        {
+            header: 'Category',
+            cellClassName: 'category-cell',
+            cell: () => <div className="name-line skeleton" />
+        },
+        {
+            header: 'Top Gainers',
+            cellClassName: 'top-gainers-cell',
+            cell: () => (
+                <div className="flex gap-1">
+                    <div className="name-image skeleton" style={{ width: 28, height: 28 }} />
+                    <div className="name-image skeleton" style={{ width: 28, height: 28 }} />
+                    <div className="name-image skeleton" style={{ width: 28, height: 28 }} />
+                </div>
+            )
+        },
+        {
+            header: '24h Change',
+            cellClassName: 'change-header-cell',
+            cell: () => (
+                <div className="price-change">
+                    <div className="change-icon skeleton" />
+                </div>
+            )
+        },
+        {
+            header: 'Market Cap',
+            cellClassName: 'market-cap-cell',
+            cell: () => <div className="price-line skeleton" />
+        },
+        {
+            header: '24h Volume',
+            cellClassName: 'volume-cell',
+            cell: () => <div className="price-line skeleton" />
+        }
+    ]
+
+    return (
+        <div id="categories-fallback" className="custom-scrollbar">
+            <h4>Top Categories</h4>
+            <DataTable
+                columns={columns}
+                data={skeletonData}
+                rowKey={(item) => item.id.toString()}
+                tableClassName="mt-3"
             />
         </div>
     )
